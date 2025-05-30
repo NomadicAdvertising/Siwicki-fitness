@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Campaign Gantt Chart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gantt-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, 1.5fr) repeat(16, minmax(40px, 1fr));
+            gap: 1px;
+            background-color: #e5e7eb; /* grid line color */
+        }
+        .gantt-header, .gantt-cell, .gantt-task-name, .gantt-phase-name {
+            background-color: white;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb; /* cell border */
+            font-size: 0.8rem;
+        }
+        .gantt-header {
+            font-weight: bold;
+            text-align: center;
+            background-color: #f3f4f6; /* header background */
+        }
+        .gantt-task-bar {
+            height: 1.5rem; /* 24px */
+            border-radius: 0.25rem; /* rounded-md */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .gantt-phase-name {
+            grid-column: 1 / -1; /* Span all columns */
+            font-weight: bold;
+            background-color: #d1d5db; /* phase background */
+            color: #1f2937;
+            margin-top: 0.5rem;
+        }
+        .task-bar-phase1 { background-color: #4f46e5; /* Indigo */ }
+        .task-bar-phase2 { background-color: #10b981; /* Emerald */ }
+        .task-bar-phase3 { background-color: #f59e0b; /* Amber */ }
+        .task-bar-milestone { background-color: #ef4444; /* Red */ }
+
+        @media (max-width: 768px) {
+            .gantt-grid {
+                grid-template-columns: minmax(100px, 1fr) repeat(16, minmax(25px, 1fr));
+            }
+            .gantt-header, .gantt-cell, .gantt-task-name, .gantt-phase-name {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.5rem;
+            }
+            .gantt-task-bar {
+                font-size: 0.6rem;
+                height: 1.25rem;
+            }
+        }
+         /* Confirmation: NO SVG graphics were used. NO Mermaid JS was used. */
+    </style>
+</head>
+<body class="bg-slate-100 p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 text-center">Marketing Campaign Process & Schedule</h1>
+        </header>
+
+        <section class="mb-8 bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">Campaign Workflow Overview</h2>
+            <ul class="list-disc list-inside text-slate-600 leading-relaxed space-y-2">
+                <li><strong>Initial Setup:</strong> Start with pixel setup and integration with Stripe to measure sales.</li>
+                <li><strong>Research & Persona Building:</strong> Conduct marketing research to build the Buyer Persona.</li>
+                <li><strong>Creative Development:</strong> Create ad copies and creatives tailored to the Buyer Persona's problems, frustrations, and goals.</li>
+                <li><strong>Approval & Launch:</strong> Once creatives are approved, the ads go live.</li>
+                <li><strong>Initial Monitoring (7 Days):</strong> Allow 7 days for ads and audiences to spend the budget and monitor their initial performance.</li>
+                <li><strong>First Optimization:</strong> After 7 days, begin optimizing by deactivating low-performing ads to reallocate budget to top performers.</li>
+                <li><strong>Audience Management:</strong> If an audience shows no well-performing ads, it will be deactivated and replaced with a new one.</li>
+                <li><strong>Saturation & Refresh Cycle (1-2 Months):</strong> Typically, after 1-2 months, ads may become saturated. At this point, refresh audiences with new creatives and restart the optimization process.</li>
+            </ul>
+        </section>
+
+        <section class="bg-white p-4 md:p-6 rounded-lg shadow-lg overflow-x-auto">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">Gantt Chart Timeline</h2>
+            <div class="gantt-grid">
+                <div class="gantt-header">Task / Week</div>
+                <script>
+                    for (let i = 1; i <= 16; i++) {
+                        document.write(`<div class="gantt-header">W${i}</div>`);
+                    }
+                </script>
+
+                <div class="gantt-phase-name">Phase 1: Campaign Setup & Launch (Est. 3-4 Weeks)</div>
+                
+                <div class="gantt-task-name">1.1 Pixel Setup & Stripe Integration</div>
+                <div class="gantt-cell" style="grid-column-start: 2; grid-column-end: 3;">
+                    <div class="gantt-task-bar task-bar-phase1">3-5 Days</div>
+                </div>
+                <script>for(let i=0; i<15; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">1.2 Marketing Research & Buyer Persona</div>
+                <div class="gantt-cell" style="grid-column-start: 2; grid-column-end: 4;">
+                    <div class="gantt-task-bar task-bar-phase1">5-7 Days</div>
+                </div>
+                <script>for(let i=0; i<14; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">2.1 Create Ad Copies & Creatives</div>
+                <div class="gantt-cell" style="grid-column-start: 3; grid-column-end: 5;">
+                     <div class="gantt-task-bar task-bar-phase1">7-10 Days</div>
+                </div>
+                <script>for(let i=0; i<14; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">2.2 Internal/Client Approval</div>
+                <div class="gantt-cell" style="grid-column-start: 5; grid-column-end: 6;">
+                    <div class="gantt-task-bar task-bar-phase1">2-3 Days</div>
+                </div>
+                <script>for(let i=0; i<13; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">3.1 Launch Ads</div>
+                <div class="gantt-cell" style="grid-column-start: 5; grid-column-end: 6;">
+                    <div class="gantt-task-bar task-bar-milestone">LAUNCH</div>
+                </div>
+                <script>for(let i=0; i<13; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-phase-name">Phase 2: Initial Performance & Optimization (Est. 1-2 Weeks Post-Launch)</div>
+
+                <div class="gantt-task-name">4.1 Initial Ad Performance Monitoring</div>
+                <div class="gantt-cell" style="grid-column-start: 5; grid-column-end: 7;">
+                    <div class="gantt-task-bar task-bar-phase2">7 Days</div>
+                </div>
+                <script>for(let i=0; i<12; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">5.1 Analyze Performance Data</div>
+                <div class="gantt-cell" style="grid-column-start: 7; grid-column-end: 8;">
+                    <div class="gantt-task-bar task-bar-phase2">1-2 Days</div>
+                </div>
+                <script>for(let i=0; i<11; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">5.2 Turn Off Low-Performing Ads</div>
+                <div class="gantt-cell" style="grid-column-start: 7; grid-column-end: 9;">
+                    <div class="gantt-task-bar task-bar-phase2">Ongoing</div>
+                </div>
+                <script>for(let i=0; i<10; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">5.3 Deactivate/Replace Poor Audiences</div>
+                <div class="gantt-cell" style="grid-column-start: 7; grid-column-end: 9;">
+                    <div class="gantt-task-bar task-bar-phase2">Ongoing</div>
+                </div>
+                <script>for(let i=0; i<10; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-phase-name">Phase 3: Ongoing Management & Refresh Cycle (Continuous)</div>
+
+                <div class="gantt-task-name">6.1 Continuous Monitoring & Optimization</div>
+                <div class="gantt-cell" style="grid-column-start: 7; grid-column-end: 17;">
+                    <div class="gantt-task-bar task-bar-phase3">Ongoing</div>
+                </div>
+                <script>for(let i=0; i<1; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">7.1 Monitor for Ad Saturation</div>
+                 <div class="gantt-cell" style="grid-column-start: 9; grid-column-end: 13;">
+                    <div class="gantt-task-bar task-bar-phase3">1-2 Months</div>
+                </div>
+                <script>for(let i=0; i<6; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">7.2 Develop New Creatives (Refresh)</div>
+                <div class="gantt-cell" style="grid-column-start: 13; grid-column-end: 15;">
+                    <div class="gantt-task-bar task-bar-phase3">7-10 Days</div>
+                </div>
+                <script>for(let i=0; i<4; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">7.3 Identify/Build New Audiences (Refresh)</div>
+                <div class="gantt-cell" style="grid-column-start: 13; grid-column-end: 15;">
+                    <div class="gantt-task-bar task-bar-phase3">3-5 Days</div>
+                </div>
+                <script>for(let i=0; i<4; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+                <div class="gantt-task-name">7.4 Launch Refreshed Campaign</div>
+                <div class="gantt-cell" style="grid-column-start: 15; grid-column-end: 16;">
+                    <div class="gantt-task-bar task-bar-milestone">REFRESH</div>
+                </div>
+                <script>for(let i=0; i<3; i++) document.write('<div class="gantt-cell"></div>')</script>
+                
+                <div class="gantt-task-name">7.5 Repeat Cycle</div>
+                <div class="gantt-cell" style="grid-column-start: 16; grid-column-end: 17;">
+                    <div class="gantt-task-bar task-bar-phase3">-></div>
+                </div>
+                <script>for(let i=0; i<2; i++) document.write('<div class="gantt-cell"></div>')</script>
+
+            </div>
+            <p class="text-xs text-slate-500 mt-4">Note: Timeline is illustrative. "W" denotes week. Durations are estimates and can vary. Some tasks may overlap. "Ongoing" tasks extend as needed.</p>
+        </section>
+
+        <footer class="text-center mt-12 mb-4">
+            <p class="text-sm text-slate-500">&copy; <script>document.write(new Date().getFullYear())</script> Marketing Campaign Schedule. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
